@@ -15,9 +15,7 @@
   
     
     <main class="w-full h-full">
-    <% if !current_page?(new_user_session_path)%>
-    <%= link_to "Log out", destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete } %>
-    <% end %>
+    <%= render partial:"shared/navbar"%>
       <%= yield %>
       
     </main>

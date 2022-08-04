@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :recipes
   end
   # Defines the root path route ("/")
-  root 'recipes#index'
+  # get '/recipes', to: 'recipes#index' 
+  root 'recipes#index' 
 end
