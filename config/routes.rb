@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       member do
         get :toggle_public
       end
+      resources :recipe_food, only: :create
     end
   end
   # Defines the root path route ("/")
