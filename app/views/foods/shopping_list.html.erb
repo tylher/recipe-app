@@ -10,4 +10,28 @@
         </h3>
   </div>
 
+  <div class="lg:w-3/6 w-5/6 m-auto bg-white">
+    <table class="w-full border table-auto">
+      <thead>
+        <tr>
+          <th>Food</th>
+          <th>Measurement unit</th>
+          <th>Unit price</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <% @ingredients.each do |food|%>
+          <tr class="bg-gray-50 text-center">
+            <td class="p-2 border-r"><%= food.name %></td>
+            <td class="p-2 border-r"><%= food.measurement_unit %></td>
+            <td class="p-2 border-r"><%= "$#{food.quantity}" %></td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+
+
 </section>
