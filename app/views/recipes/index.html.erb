@@ -4,7 +4,7 @@
 <%= button_to 'create new recipe', new_user_recipe_path(current_user), method: :get, class:"float-right bg-amber-400 p-3 rounded-3xl hover:bg-amber-500 text-white"%>
 </div>
 <% @recipes.each do |recipe|%>
-<%= link_to user_recipe_path(id: recipe.id), class:"lg:w-3/6 w-5/6 m-auto" do%>
+<%= link_to user_recipe_path(id: recipe.id,user_id: current_user), class:"lg:w-3/6 w-5/6 m-auto" do%>
     <article class="flex  md:gap-20 gap-5 justify-between bg-yellow-200 p-7 rounded-lg" >
         <div class="flex flex-col ">
         <h2><%= recipe.name %></h2>
