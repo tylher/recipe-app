@@ -15,8 +15,8 @@
   
     
     <main class="w-full h-full">
-    <% if !current_page?(new_user_session_path)%>
-    <%= link_to "Log out", destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete } %>
+    <% if user_signed_in? %>
+      <%= link_to "Log out", destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete } %>
     <% end %>
       <%= yield %>
       

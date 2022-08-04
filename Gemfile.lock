@@ -95,7 +95,7 @@ GEM
       responders
       warden (~> 1.2.3)
     digest (3.1.0)
-    erubi (1.10.0)
+    erubi (1.11.0)
     foreman (0.87.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -136,13 +136,10 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
-    nokogiri (1.13.8-x64-unknown)
-      racc (~> 1.4)
     nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.4.2)
-    pg (1.4.2-x64-unknown)
     public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
@@ -200,8 +197,6 @@ GEM
     stimulus-rails (1.1.0)
       railties (>= 6.0.0)
     strscan (3.0.4)
-    tailwindcss-rails (2.0.10-x64-unknown)
-      railties (>= 6.0.0)
     tailwindcss-rails (2.0.10-x86_64-linux)
       railties (>= 6.0.0)
     thor (1.2.1)
@@ -212,8 +207,6 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
-    tzinfo-data (1.2022.1)
-      tzinfo (>= 1.0.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -234,7 +227,6 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
-  x64-unknown
   x86_64-linux
 
 DEPENDENCIES
