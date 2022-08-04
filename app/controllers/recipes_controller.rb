@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  skip_before_action :authenticate_user!, :only => :public_recipes
+
   def index
     @recipes = Recipe.all
   end
@@ -42,6 +44,10 @@ class RecipesController < ApplicationController
         end
       end
     end
+  end
+
+  def public_recipes
+    @public_recipes = Recipe.all
   end
 
   private
