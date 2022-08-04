@@ -7,6 +7,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
+  def show
+    @recipe = Recipe.find(params[:id])
+  end
+
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.preparation_time = "PT#{params[:recipe][:prep_hours]}
@@ -42,6 +46,17 @@ class RecipesController < ApplicationController
         end
       end
     end
+  end
+
+  def toggle_public
+    recipe = Recipe.find(params[:id])
+    recipe.public = if recipe.nil?
+                      false
+                    else
+                      !recipe.public
+                    end
+    recipe.save
+    redirect_to user_recipe_path
   end
 
   private

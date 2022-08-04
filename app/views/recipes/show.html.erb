@@ -1,0 +1,22 @@
+<section class="py-10 px-24 text-gray-800">
+<h1 class="font-semibold text-3xl text-center mb-6"><%= @recipe.name%></h1>
+<div class="flex justify-between ">
+    <div class="flex flex-col gap-10 ">
+        <h3 class="text-xl font-medium">Preparation Time: <%= @recipe.preparation_time.in_hours.round(2) %> hours</h3>
+        <h3 class="text-xl font-medium">Cooking Time: <%= @recipe.cooking_time.in_hours.round(2) %> hours</h3>
+        <p class="text-lg">Steps go here ....</p>
+    </div>
+    <div>
+        <h2 class="font-medium text-2xl mb-3">Public</h2>
+        <%= link_to  toggle_public_user_recipe_path do %> 
+            <div class="w-20 p-0.5 border-gray-900 h-8 rounded-full 
+            flex items-center <%= @recipe.public ? "justify-end bg-green-600" : " justify-start bg-gray-300" %>" >
+                <div class="w-2/5 border-gray-900 h-7 rounded-full bg-white">
+                </div>
+            </div>
+        <% end %> 
+    </div>
+</div>
+
+
+</section>
