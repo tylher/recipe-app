@@ -1,17 +1,18 @@
 <section class="py-10 flex flex-col gap-10 bg-yellow-50">
-
-<% @public_recipes.each do |recipe| %>
-    <article class="flex lg:w-3/6 w-5/6 m-auto md:gap-20 gap-5 justify-between bg-yellow-200 p-7 rounded-lg" >
-        <div class="flex flex-col ">
-        <h2><%= recipe.name %></h2>
-        <%
-=begin%>
- <%= button_to "Remove", user_recipe_path(id: recipe.id,user_id: current_user.id), method: :delete %> 
-<%
-=end%>
-        </div>
-        <p><%= recipe.description %></p>
-    </article>
-<% end %>
+  <h2 class="text-5xl font-normal leading-normal lg:w-3/6 w-5/6 m-auto">Public recipes</h2>
+  <% @public_recipes.each do |recipe| %>
+    <% sum = 0 %>
+      <article class="flex lg:w-3/6 w-5/6 m-auto md:gap-20 gap-5 justify-between bg-yellow-200 p-7 rounded-lg" >
+          <div class="flex flex-col ">
+            <h2 class="text-2xl"><%= recipe.name %></h2>
+            <h3>By: <%= recipe.user.name %></h3>
+          </div>
+          <div>
+            <p>Total Food Items: <%= recipe.recipe_foods.count %></p>
+            <% recipe.recipe_foods.each {|food| sum += food.quantity * food.food.unit_price} %>
+            <h3>Total Price: <%= sum %></h3>
+          <div>
+      </article>
+  <% end %>
 
 </section>
