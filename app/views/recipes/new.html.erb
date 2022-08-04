@@ -1,0 +1,51 @@
+<div class="h-5/6 flex flex-col justify-center items-center">
+<%= form_with model: @recipe, url: user_recipes_path, method: :post, local: true, class:" border-2 w-3/5 flex flex-col items-center px-20 py-6"  do |f|%>
+        <div class="flex flex-col w-full">
+            <%= f.label :name,"Name of recipe" %>
+            <%= f.text_field :name%>
+        </div>
+        <div class="flex flex-col w-full">
+            <%= f.label :description,"Description" %>
+            <%= f.text_area :description%>
+        </div>
+        <div >
+            <h2 class="text-xl ">Preparation time</h2>
+            <div class="inline-flex w-full gap-10 flex-wrap">
+            <div class="flex flex-col w-1/4">
+            <%= f.label :prep_hours, 'Hours: '%>
+            <%= f.number_field :prep_hours,max: 24,min: 0, class:"w-full" %>
+            </div>
+            <div class="flex flex-col w-1/4">
+            <%= f.label :prep_minutes, 'Minutes: '%>
+            <%= f.number_field :prep_minutes, class:"w-full" %>
+            </div>
+            <div class="flex flex-col w-1/4">
+            <%= f.label :prep_seconds, 'Seconds: '%>
+            <%= f.number_field :prep_seconds,class:"w-full" %>
+            </div>
+
+            <%= f.hidden_field :Preparation_time, value: "" %>
+        <div>
+        <div >
+            <h2 class="text-xl ">Cooking time</h2>
+            <div class="inline-flex w-full gap-10 flex-wrap">
+            <div class="flex flex-col w-1/4">
+            <%= f.label :cooking_hours, 'Hours: '%>
+            <%= f.number_field :cooking_hours,max: 24,min: 0, class:"w-full" %>
+            </div>
+            <div class="flex flex-col w-1/4">
+            <%= f.label :cooking_minutes, 'Minutes: '%>
+            <%= f.number_field :cooking_minutes, class:"w-full" %>
+            </div>
+            <div class="flex flex-col w-1/4">
+            <%= f.label :cooking_seconds, 'Seconds: '%>
+            <%= f.number_field :cooking_seconds,class:"w-full" %>
+            </div>
+
+            <%= f.hidden_field :cooking_time, value: "" %>
+        <div>
+
+        <%= f.submit "Submit"%>
+
+<% end %>
+</div>
