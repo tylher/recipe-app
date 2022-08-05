@@ -30,7 +30,7 @@ class RecipeFoodsController < ApplicationController
     respond_to do |format|
       format.html do
         if @recipe_food.destroy
-          flash[:success] = 'Recipe successfully deleted'
+          flash[:success] = 'ingredient successfully deleted'
           redirect_to user_recipe_path(current_user)
         else
           flash[:error] = 'Something went wrong'
@@ -39,10 +39,6 @@ class RecipeFoodsController < ApplicationController
       end
     end
   end
-
-  #   def food_params
-  #     params.permit(:name, :quantity)
-  #   end
 
   def recipe_food_params
     params.require(:recipe_food).permit(:quantity, :food_id)

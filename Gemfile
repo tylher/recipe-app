@@ -4,11 +4,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # ruby File.read('.ruby-version').strip || '3.1.2'
 # ruby '3.1.2'
 if File.exist?('.ruby-version')
-    if File.read('.ruby-version')
-        ruby File.read('.ruby-version')
-    end
+  ruby File.read('.ruby-version') if File.read('.ruby-version')
 else
-   ruby '3.1.2'
+  ruby '3.1.2'
 end
 
 gem 'rails', '~> 7.0.3'
