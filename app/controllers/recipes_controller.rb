@@ -57,6 +57,10 @@ class RecipesController < ApplicationController
     recipe.save
     redirect_to user_recipe_path
   end
+  
+  def public_recipes
+    @public_recipes = Recipe.all.where(public: true).order(created_at: :desc)
+  end
 
   private
 

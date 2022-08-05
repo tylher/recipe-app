@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   get '/recipes', to: 'recipes#index'
   get '/general_shopping_list', to: 'user#general_shopping_list' 
-  get '/public_recipes', to: 'public_recipes#index'
+ get '/public_recipes', to: 'recipes#public_recipes'
   root 'recipes#index' 
+  root 'recipes#index'
+
+
 end
