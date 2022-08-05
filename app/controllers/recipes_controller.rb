@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @recipe_foods = RecipeFood.where(recipe_id: @recipe.id)
   end
 
   def create
@@ -54,7 +55,6 @@ class RecipesController < ApplicationController
     recipe.save
     redirect_to user_recipe_path
   end
-
 
   private
 
