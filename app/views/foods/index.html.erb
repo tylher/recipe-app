@@ -21,7 +21,7 @@
           <tr class="bg-gray-50 text-center">
             <td class="p-2 border-r"><%= food.name %></td>
             <td class="p-2 border-r"><%= food.measurement_unit %></td>
-            <td class="p-2 border-r"><%= "$#{food.quantity}" %></td>
+            <td class="p-2 border-r"><%= "$#{food.price}" %></td>
             <td class="p-2 border-r">
               <%= button_to "Delete", user_food_path(id: food.id, user_id: food.user_id), method: :delete, class: "focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-2 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 mr-1 mb-1 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" %>
             </td>

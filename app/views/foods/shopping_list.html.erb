@@ -5,7 +5,7 @@
     <h3>Amount of food items to buy: <%= @ingredients.count %> </h3>
     <h3>Total value of food needed: 
             <% sum = 0 %>
-            <% @ingredients.each { |food_recipe| sum += Food.find(food_recipe.food_id).unit_price * food_recipe.quantity} %>
+            <% @ingredients.each { |food_recipe| sum += Food.find(food_recipe.food_id).price * food_recipe.quantity} %>
              <%= "$#{sum}" %>
         </h3>
   </div>
@@ -15,17 +15,17 @@
       <thead>
         <tr>
           <th>Food</th>
-          <th>Measurement unit</th>
-          <th>Unit price</th>
+          <th>Quantity</th>
+          <th>Price</th>
         </tr>
       </thead>
       <tbody>
 
         <% @ingredients.each do |food|%>
           <tr class="bg-gray-50 text-center">
-            <td class="p-2 border-r"><%= food.name %></td>
-            <td class="p-2 border-r"><%= food.measurement_unit %></td>
-            <td class="p-2 border-r"><%= "$#{food.quantity}" %></td>
+            <td class="p-2 border-r"><%= food.food.name %></td>
+            <td class="p-2 border-r"><%=food.quantity %> <%= food.food.measurement_unit %></td>
+            <td class="p-2 border-r"><%= "$#{food.quantity * food.food.price}" %></td>
           </tr>
         <% end %>
 

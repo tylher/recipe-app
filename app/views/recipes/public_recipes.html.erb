@@ -9,7 +9,7 @@
           </div>
           <div>
             <p>Total Food Items: <%= recipe.recipe_foods.count %></p>
-            <% recipe.recipe_foods.each {|food| sum += food.quantity * food.food.unit_price} %>
+            <% recipe.recipe_foods.each {|food| sum += food.quantity * food.food.price} %>
             <h3>Total Price: <%= sum %></h3>
           <div>
       </article>
