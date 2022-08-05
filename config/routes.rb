@@ -18,7 +18,4 @@ Rails.application.routes.draw do
   get '/general_shopping_list', to: 'user#general_shopping_list' 
  get '/public_recipes', to: 'recipes#public_recipes'
   root 'recipes#index' 
-  root 'recipes#index'
-
-
 end
