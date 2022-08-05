@@ -11,4 +11,7 @@ class UsersController < ApplicationController
   #         end
   #     end
   # end
+
+  def general_shopping_list
+  end
 end

@@ -5,14 +5,17 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users do
     resources :foods, except: :update
-    resources :recipes do
+    resources :recipes, except: :index do
       member do
         get :toggle_public
       end
-      resources :recipe_food, only: :create
+      resources :recipe_foods, only: [:create,:new,:index]
     end
+    
   end
   # Defines the root path route ("/")
-  # get '/recipes', to: 'recipes#index' 
+  get '/recipes', to: 'recipes#index'
+  get '/general_shopping_list', to: 'user#general_shopping_list' 
+  get '/public_recipes', to: 'public_recipes#index'
   root 'recipes#index' 
 end
