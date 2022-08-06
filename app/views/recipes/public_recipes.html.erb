@@ -1,6 +1,8 @@
+
 <section class="py-10 flex flex-col gap-10 bg-yellow-50">
   <h2 class="text-5xl font-normal leading-normal lg:w-3/6 w-5/6 m-auto">Public recipes</h2>
   <% @public_recipes.each do |recipe| %>
+  <%= link_to user_recipe_path(id: recipe.id, user_id: current_user.id) do %>
     <% sum = 0 %>
       <article class="flex lg:w-3/6 w-5/6 m-auto md:gap-20 gap-5 justify-between bg-yellow-200 p-7 rounded-lg" >
           <div class="flex flex-col ">
@@ -13,6 +15,6 @@
             <h3>Total Price: <%= sum %></h3>
           <div>
       </article>
+      <%end%>
   <% end %>
-
 </section>

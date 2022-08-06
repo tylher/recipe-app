@@ -5,10 +5,6 @@
             <%= f.select :food_id, @foods.collect{ |u| [u.name, u.id] } %>
     </div>
     <div class="flex flex-col w-full mb-2">
-            <%= f.label :food_id, "Name of food" %>
-            <%= f.select :food_id, @recipes.collect{ |u| [u.name, u.id] } %>
-    </div>
-    <div class="flex flex-col w-full mb-2">
         <%= f.label :quantity, "Quantity" %>
         <%= f.number_field :quantity %>
     </div>

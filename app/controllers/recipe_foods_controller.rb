@@ -6,13 +6,11 @@ class RecipeFoodsController < ApplicationController
   def new
     @recipe_food = RecipeFood.new
     @foods = Food.all
-    @recipes = Recipe.all
   end
 
   def create
     @recipe_food = RecipeFood.new(recipe_food_params)
     @foods = Food.all
-    @recipes = Recipe.all
     @recipe_food.recipe_id = params[:recipe_id]
     respond_to do |format|
       format.html do
