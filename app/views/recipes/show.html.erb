@@ -1,0 +1,58 @@
+<section class="py-10 px-24 text-gray-800">
+<h1 class="font-semibold text-3xl text-center mb-6"><%= @recipe.name%></h1>
+<div class="flex justify-between ">
+    <div class="flex flex-col gap-10 ">
+        <h3 class="text-xl font-medium">Preparation Time: <%= @recipe.preparation_time.in_hours.round(2) %> hours</h3>
+        <h3 class="text-xl font-medium">Cooking Time: <%= @recipe.cooking_time.in_hours.round(2) %> hours</h3>
+        <p class="text-lg">Steps go here ....</p>
+    </div>
+    <div>
+        <h2 class="font-medium text-2xl mb-3">Public</h2>
+        <%= link_to  toggle_public_user_recipe_path do %> 
+            <div class="w-20 p-0.5 border-gray-900 h-8 rounded-full 
+            flex items-center <%= @recipe.public ? "justify-end bg-green-600" : " justify-start bg-gray-300" %>" >
+                <div class="w-2/5 border-gray-900 h-7 rounded-full bg-white">
+                </div>
+            </div>
+        <% end %> 
+    </div>
+</div>
+
+<div class="flex justify-between lg:w-4/6 w-5/6 m-auto">
+<%= button_to 'Generate shopping list', general_shopping_list_path, method: :get, class:"float-right bg-gray-500 p-3 rounded-xl hover:bg-amber-500 text-white"%>
+<%= button_to 'Add ingredient', new_user_recipe_recipe_food_path(current_user,@recipe), method: :get, class:"float-right bg-amber-400 p-3 rounded-xl hover:bg-amber-500 text-white"%>
+</div>
+
+  <div class="lg:w-4/6 w-5/6 m-auto bg-white mt-10">
+    <table class="w-full border table-auto">
+      <thead>
+        <tr>
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>value</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <% @recipe_foods.each do |r_food|%>
+          <tr class="bg-gray-50 text-center">
+            <td class="p-2 border-r"><%= r_food.food.name %></td>
+            <td class="p-2 border-r"><%= r_food.quantity %></td>
+            <td class="p-2 border-r"><%= "$#{if r_food.quantity == nil
+            0
+            else
+             r_food.food.price*r_food.quantity
+             end}" %></td>
+            <td class="p-2 border-r flex justify-center">
+              <%= button_to "Modify", user_recipe_path(id: r_food.recipe_id, user_id: current_user.id), method: :update, class: "focus:outline-none text-white bg-amber-500 hover:bg-amber-700 focus:ring-2 focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 mr-1 mb-1 dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-900" %>
+              <%= button_to "Remove", user_recipe_recipe_food_path(id: r_food.id, user_id: current_user.id,recipe_id: r_food.recipe_id ), method: :delete, class: "focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-2 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 mr-1 mb-1 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" %>
+            </td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+
+</section>

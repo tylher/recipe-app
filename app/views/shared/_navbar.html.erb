@@ -1,0 +1,16 @@
+<% unless current_page?(new_user_session_path)||current_page?(new_user_registration_path)%>
+<nav class="flex justify-end w-full">
+   <div class="flex p-5 justify-between w-2/3 px-20">
+   <ul class="flex justify-between w-3/5">
+   <li><%= link_to  'Food Ingredents', user_foods_path(current_user)%></li>
+   <li><%= link_to  'Recipes', recipes_path(current_user) %></li>
+   <li><%= link_to  'Public Recipes', public_recipes_path %></li>
+   </ul>
+   <ul>
+    <li><%= link_to "Log out", destroy_user_session_path, 
+    class: 'nav-link', data: { turbo_method: :delete } %>
+    </li>
+   </ul>
+   </div>
+</nav>
+<% end %>

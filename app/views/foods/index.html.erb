@@ -1,0 +1,35 @@
+
+<section class="py-10 flex flex-col gap-10 bg-yellow-50">
+<div class="lg:w-3/6 w-5/6 m-auto">
+<%= button_to 'Add new food', new_user_food_path(current_user), method: :get, class:"float-right bg-amber-400 p-3 rounded-3xl hover:bg-amber-500 text-white"%>
+</div>
+
+
+  <div class="lg:w-3/6 w-5/6 m-auto bg-white">
+    <table class="w-full border table-auto">
+      <thead>
+        <tr>
+          <th>Food</th>
+          <th>Measurement unit</th>
+          <th>Unit price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <% @foods.each do |food|%>
+          <tr class="bg-gray-50 text-center">
+            <td class="p-2 border-r"><%= food.name %></td>
+            <td class="p-2 border-r"><%= food.measurement_unit %></td>
+            <td class="p-2 border-r"><%= "$#{food.price}" %></td>
+            <td class="p-2 border-r">
+              <%= button_to "Delete", user_food_path(id: food.id, user_id: food.user_id), method: :delete, class: "focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-2 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 mr-1 mb-1 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" %>
+            </td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+
+</section>
