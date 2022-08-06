@@ -14,8 +14,8 @@ class Ability
       can :manage,:all
     else
       can :read, Recipe,public: true
-      can :manage,Recipe,author:user
-      can :manage,Food,author:user
+      can :manage,Recipe,user:user
+      can :manage,RecipeFood,user:user
     end
     # The first argument to `can` is the action you are giving the user
     # permission to do.

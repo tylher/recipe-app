@@ -8,20 +8,24 @@
     </div>
     <div>
         <h2 class="font-medium text-2xl mb-3">Public</h2>
-        <%= link_to  toggle_public_user_recipe_path do %> 
-            <div class="w-20 p-0.5 border-gray-900 h-8 rounded-full 
-            flex items-center <%= @recipe.public ? "justify-end bg-green-600" : " justify-start bg-gray-300" %>" >
-                <div class="w-2/5 border-gray-900 h-7 rounded-full bg-white">
+        <% if can? :edit, @recipe %>
+            <%= link_to  toggle_public_user_recipe_path do %> 
+                <div class="w-20 p-0.5 border-gray-900 h-8 rounded-full 
+                flex items-center <%= @recipe.public ? "justify-end bg-green-600" : " justify-start bg-gray-300" %>" >
+                    <div class="w-2/5 border-gray-900 h-7 rounded-full bg-white">
+                    </div>
                 </div>
-            </div>
-        <% end %> 
+            <% end %> 
+        <% end %>
     </div>
 </div>
 
+<% if @recipe.user == current_user  %>
 <div class="flex justify-between lg:w-4/6 w-5/6 m-auto">
 <%= button_to 'Generate shopping list', general_shopping_list_path, method: :get, class:"float-right bg-gray-500 p-3 rounded-xl hover:bg-amber-500 text-white"%>
 <%= button_to 'Add ingredient', new_user_recipe_recipe_food_path(current_user,@recipe), method: :get, class:"float-right bg-amber-400 p-3 rounded-xl hover:bg-amber-500 text-white"%>
 </div>
+<% end %>
 
   <div class="lg:w-4/6 w-5/6 m-auto bg-white mt-10">
     <table class="w-full border table-auto">
@@ -45,8 +49,10 @@
              r_food.food.price*r_food.quantity
              end}" %></td>
             <td class="p-2 border-r flex justify-center">
+              <% if can? :manage, r_food.recipe %>
               <%= button_to "Modify", user_recipe_path(id: r_food.recipe_id, user_id: current_user.id), method: :update, class: "focus:outline-none text-white bg-amber-500 hover:bg-amber-700 focus:ring-2 focus:ring-amber-300 font-medium rounded-lg text-sm px-4 py-2 mr-1 mb-1 dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-900" %>
               <%= button_to "Remove", user_recipe_recipe_food_path(id: r_food.id, user_id: current_user.id,recipe_id: r_food.recipe_id ), method: :delete, class: "focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-2 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 mr-1 mb-1 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" %>
+              <% end %>
             </td>
           </tr>
         <% end %>
