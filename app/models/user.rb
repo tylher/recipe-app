@@ -5,4 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :foods
   has_many :recipes
+
+
+  Roles = [:default,:admin]
+
+  def is?(requested_role)
+    self.role == requested_role.to_s
+  end
+  
 end

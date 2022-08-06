@@ -82,3 +82,5 @@ gem 'devise'
 gem 'tailwindcss-rails'
 
 gem 'foreman'
+
+gem 'cancancan'
