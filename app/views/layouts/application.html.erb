@@ -15,7 +15,9 @@
   
     
     <main class="w-full h-full">
-    <%= render partial:"shared/navbar"%>
+    <% if user_signed_in? %>
+      <%= render partial:"shared/navbar"%>
+    <% end %>
       <%= yield %>
       
     </main>
